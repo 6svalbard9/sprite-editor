@@ -1,0 +1,66 @@
+html,body{
+	height: 100%;
+	color:#CC469B;
+	font-family: 'Dosis', sans-serif;
+}
+
+body{
+	background: url('../images/repeatBg.png') repeat-x;
+}
+main{
+	margin: 0px auto;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Indie Flower', cursive;
+}
+#leftMenu{
+	text-align: center;
+	background:#FFF666;
+	border-left:#FFF99A 3px solid;
+	min-height: 100%;
+	display: table-cell;
+}
+
+input[type='file']{
+	display: none;
+}
+
+.sprite{display: block;
+	overflow: hidden;
+}
+/*#spriteContainer{background: red;
+	}*/
+#hinaExample{background: url('../images/hinaBg.png') no-repeat;
+	height: 360px;
+	width:100%;
+	max-width: 1397px}
+#cssOutput{
+	text-align: left;
+}
+.tab{
+	padding-left:5em;
+}
+#spriteOperations{
+	background:#FFF666;
+	border-bottom:#FFF99A 5px solid;
+	border-radius: 20px 20px;
+	margin-bottom: 40px;
+}
+
+#rule-x-1,#rule-x-2{
+	position      : absolute;
+	min-width     : 100%;
+	border-bottom : 3px red solid;
+	border-top    : 3px red solid;
+	min-height    : 3px;
+	background    : #000;
+}
+
+#rule-y-1,#rule-y-2{
+	position     : absolute;
+	min-height   : 100%;
+	border-right : 3px red solid;
+	border-left  : 3px red solid;
+	min-width    : 3px;
+	background   : #000;
+}
