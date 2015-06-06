@@ -49,6 +49,8 @@ input[type='file']{
 
 #rule-x-1,#rule-x-2{
 	position      : absolute;
+	top:0;
+	left:15;
 	min-width     : 100%;
 	border-bottom : 3px red solid;
 	border-top    : 3px red solid;
@@ -58,6 +60,8 @@ input[type='file']{
 
 #rule-y-1,#rule-y-2{
 	position     : absolute;
+	top:0;
+	left:15;
 	min-height   : 100%;
 	border-right : 3px red solid;
 	border-left  : 3px red solid;

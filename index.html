@@ -37,6 +37,8 @@
 <link rel="stylesheet" href="./css/main.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
 
   <!--[if lt IE 9]>
@@ -47,7 +49,7 @@
 
 	<main class='container-fluid col-md-10'>
 		<fieldset id='spriteOperations' class='col-md-2'>
-			<h4>You decide the rules <b>:</b>3 <i class="fa fa-crop"></i></h4>
+			<h4>You decide the rules <b>:</b>3 </h4>
 			<label class="checkbox-inline" for='x-1'>
 			  <input type="checkbox" id="x-1" value="x-1"> x-1
 			</label>
@@ -60,12 +62,15 @@
 			<label class="checkbox-inline" for='y-2'>
 			  <input type="checkbox" id="y-2" value="y-2"> y-2
 			</label>
+			<button id='crop' type='button'>
+				<i class="fa fa-crop"></i>
+			</button>
 		</fieldset>
 		<div id='spriteContainer' class=' col-md-12'>
-			<div id='rule-x-1' style='display:none'></div>
-		<div id='rule-x-2' style='display:none'></div>
-		<div id='rule-y-1' style='display:none'></div>
-		<div id='rule-y-2' style='display:none'></div>
+			<div id='rule-x-1' class='rule-x' style='display:none'></div>
+			<div id='rule-x-2' class='rule-x' style='display:none'></div>
+			<div id='rule-y-1' class='rule-y' style='display:none'></div>
+			<div id='rule-y-2' class='rule-y' style='display:none'></div>
 			<div id='hinaExample' class='sprite'></div>
 		</div>
 		<div id='cssOutput' class='col-md-4 col-md-offset-4'>

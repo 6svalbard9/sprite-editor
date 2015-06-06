@@ -1,6 +1,6 @@
-// window.onbeforeunload = function() {
-//   return "Humm... Are you already done?";
-// };
+window.onbeforeunload = function() {
+  return "Humm... Are you already done?";
+};
 
 var fileReader = new FileReader();
 		fileReader.onload = function(e){
@@ -41,6 +41,34 @@ var fileReader = new FileReader();
 			}
 		});
 
+		$('#crop').on('click',function(){
+			var x  = $('.rule-x'),
+				y  = $('.rule-y'),
+				xy = [x[0],x[1],y[0],y[1]];
+				//console.log(xy);
+				xy.forEach(function(arr,index){
+					if($(arr).css('top')==='auto')
+						$(arr).css({'top':'0px'});
+					if($(arr).css('left')==='auto')
+						$(arr).css({'left':'15px'});
+				});
+
+				console.log(xy);
+				if($(xy[0]).css('top')>$(xy[1]).css('top'))
+					$('#background-position-x').val('-'+$(xy[0]).css('top').replace('px','')-$(xy[1]).css('top').replace('px',''));
+				else if($(xy[0]).css('top')<$(xy[1]).css('top'))
+					$('#background-position-x').val('-'+$(xy[1]).css('top').replace('px','')-$(xy[0]).css('top').replace('px',''))
+
+				if($(xy[2]).css('left')>$(xy[3]).css('left'))
+					console.log('y1>y2');
+				else if($(xy[2]).css('left')<$(xy[3]).css('left'))
+					console.log('y1<y2');
+
+		});
+
+		$('.rule-y').draggable({axis:'x',containment:'#spriteContainer'});
+		$('.rule-x').draggable({axis:'y',containment:'#spriteContainer'});
+
 		$('#spriteOperations > label').on('click',function(e){
 			var v = e.target.value;
 
@@ -49,14 +77,15 @@ var fileReader = new FileReader();
 				case 'x-2':
 				case 'y-1':
 				case 'y-2':
-					$('#rule-'+v).toggle();
+					var queryString = $('#rule-'+v);
+					queryString.toggle();
 				break;
 				default   :
 					alert('mind keeping your hands out of the code??');
 			}
 		});
 
-		$('button').on('click',function(){
+		$('#newSprite').on('click',function(){
 			'use strict';
 
 			var vals = $('#spriteValues').serializeArray(),
