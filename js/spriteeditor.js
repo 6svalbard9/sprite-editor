@@ -16,7 +16,7 @@ var fileReader = new FileReader();
 			$('#hinaExample').css('background','url(\''+e.target.value+'\') no-repeat');
 		});
 
-		$('form  input').on('input',function(e){
+		$('form  input').on('input change',function(e){
 			'use strict';
 
 			var inputName = $(e.target).attr('id'),
@@ -54,16 +54,34 @@ var fileReader = new FileReader();
 				});
 
 				console.log(xy);
-				if($(xy[0]).css('top')>$(xy[1]).css('top'))
-					$('#background-position-x').val('-'+$(xy[0]).css('top').replace('px','')-$(xy[1]).css('top').replace('px',''));
-				else if($(xy[0]).css('top')<$(xy[1]).css('top'))
-					$('#background-position-x').val('-'+$(xy[1]).css('top').replace('px','')-$(xy[0]).css('top').replace('px',''))
+				//TODO must optimize
+				var top0 = parseInt($(xy[0]).css('top').replace('px','')),
+					top1 = parseInt($(xy[1]).css('top').replace('px',''));
 
-				if($(xy[2]).css('left')>$(xy[3]).css('left'))
-					console.log('y1>y2');
-				else if($(xy[2]).css('left')<$(xy[3]).css('left'))
-					console.log('y1<y2');
+					console.log('bool',top0 > top1);
+				if(top0 > top1){
+					$('#height').val((top0-top1)).trigger('change');
+					$('#background-position-y').val('-'+(top1)).trigger('change');
+				}
+				else if(top0 < top1){
+					$('#height').val((top1-top0)).trigger('change');
+					$('#background-position-y').val('-'+(top0)).trigger('change');
+				}
 
+
+				var left0 = parseInt($(xy[2]).css('left').replace('px','')),
+					left1 = parseInt($(xy[3]).css('left').replace('px',''));
+				if(left0 > left1){
+					$('#width').val((left0-left1)).trigger('change');
+					$('#background-position-x').val('-'+(left1)).trigger('change');
+				}
+				else if(left0 < left1){
+					$('#width').val((left1-left0)).trigger('change');
+					$('#background-position-x').val('-'+(left0)).trigger('change');
+				}
+
+				$('.rule-x,.rule-y').css({'top':0,'left':0}).hide();
+				$('#spriteOperations > label > input[type=\'checkbox\']').prop('checked',false);
 		});
 
 		$('.rule-y').draggable({axis:'x',containment:'#spriteContainer'});
@@ -81,7 +99,7 @@ var fileReader = new FileReader();
 					queryString.toggle();
 				break;
 				default   :
-					alert('mind keeping your hands out of the code??');
+					//alert('mind keeping your hands out of the code??');
 			}
 		});
 
